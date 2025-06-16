@@ -1,21 +1,18 @@
 import React from 'react'
 import { Hero } from '../Components/Hero'
+import { About } from '../Components/About'
+import { Contact } from '../Components/Contact' 
 import { Services } from '../Components/Services'
-import { NavBar } from '../Components/NavBar'
-import { Experiencia } from '../Components/Experiencia'
+import { Footer } from '../Components/Footer'
 
 export const Home = () => {
   return (
     <>
-    <NavBar/>
-    <header className='hero'>
-      <Hero />
-    </header>
-    <main>
-      <Services/>
-      <Experiencia/>
-    </main>
+    <Hero />
+    <About />
+    <Contact />
+    <Services />
+    <Footer />
     </>
-    
   )
 }

@@ -1,45 +1,66 @@
 import React from 'react'
-import '../App.css'
-export const NavBar = () => {
-  return (
-    <nav className="navbar navbar-expand-lg custom-navbar">
-      <div className="container-fluid">
-        <a className="navbar-brand navbar-img" href="#"><img src="ico.jpg" alt="" className='img-ico d-inline-block align-text-top'/></a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Perzonalizar</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">Alquiler</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Servicios
-              </a>
-              <ul className="dropdown-menu">
-                <li><a className="dropdown-item" href="#">Action</a></li>
-                <li><a className="dropdown-item" href="#">Another action</a></li>
-                <li><hr className="dropdown-divider"/></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button className="btn custom-outline-blue" type="submit">Search</button>
-          </form>
+import { Link, NavLink } from 'react-router-dom';
+import logo from '../assets/icons/ico.jpg'; // Cambia el path si tu logo está en otro lugar
+import { useEffect, useRef } from 'react';
+export const Navbar = () => {
+
+    const menuRef = useRef(null);
+  const openBtnRef = useRef(null);
+  const closeBtnRef = useRef(null);
+
+  useEffect(() => {
+    const openMenu = () => {
+      menuRef.current.classList.add('nav_link--show');
+    };
+
+    const closeMenu = () => {
+      menuRef.current.classList.remove('nav_link--show');
+    };
+
+    const openBtn = openBtnRef.current;
+    const closeBtn = closeBtnRef.current;
+
+    if (openBtn) openBtn.addEventListener('click', openMenu);
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    return () => {
+      if (openBtn) openBtn.removeEventListener('click', openMenu);
+      if (closeBtn) closeBtn.removeEventListener('click', closeMenu);
+    };
+  }, []);
+
+    return (
+        <div className='nav_container'>
+
+            <nav className="nav container" >
+                <Link className="nav_logo" to="/">
+                    <img src={logo} alt="Logo" className='logo' />
+                </Link>
+                <ul className='nav_link nav_link--menu' ref={menuRef}>
+                    <li className="nav_items">
+                        <NavLink to='/' className="nav_links">Home</NavLink>
+                    </li>
+                    <li className="nav_items">
+                        <NavLink to='/about' className="nav_links">About</NavLink>
+                    </li>
+                    <li className="nav_items">
+                        <NavLink to='/contact' className="nav_links">Contact</NavLink>
+                    </li>
+                    <li className="nav_items">
+                        <NavLink to='/login' className="nav_links">Acerca de</NavLink>
+                    </li>
+                    <li className="nav_items">
+                        <NavLink to='/register' className="nav_links">Register</NavLink>
+                    </li>
+                    <li className="nav_items">
+                        <NavLink to='/login' className="nav_links">Login</NavLink>
+                    </li>
+                    <img src="/close.svg" className="nav_close" ref={closeBtnRef} alt="Cerrar menú" />
+                </ul>
+                <div className="nav_menu" ref={openBtnRef}>
+                    <img src="/menu.svg" className="nav_img" />
+                </div>
+            </nav>
         </div>
-      </div>
-</nav>
-  )
+    )
 }

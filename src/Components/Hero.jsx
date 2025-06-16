@@ -2,10 +2,13 @@ import React from 'react'
 
 export const Hero = () => {
   return (
-    <section className="hero_container container">
-      <h1 className="hero_title">UNA BICICLETA, UN CICLO DE EXPRESIONES INFINITAS.</h1>
-      <p className="hero_paragraph">Pedaleamos contigo hacia un futuro más verde. Con Briz, la bicicleta se convierte en una forma de vida, de encuentro y de transformación.</p>
-      <a href="#" className="cta">Vive la experiencia Briz</a>
-    </section>
+    <div className='hero'>
+      <section className="hero_container container">
+        <h1 className="hero_title">¡VIVE LA EXPERIENCIA BRIZ!</h1>
+        <h3>Una bicicleta. Un Ciclo de Exprexiones Infinitas</h3>
+        <p className="hero_paragraph"> Descubre la forma más divertida y emocionante de explorar la ciudad en bicicleta. </p>
+        <a href="#" className="cta">comienza ahora</a>
+      </section>
+    </div>
   )
 }
