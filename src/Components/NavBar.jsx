@@ -37,11 +37,12 @@ export const Navbar = () => {
                     <img src={logo} alt="Logo" className='logo' />
                 </Link>
                 <ul className='nav_link nav_link--menu' ref={menuRef}>
+                    
                     <li className="nav_items">
                         <NavLink to='/' className="nav_links">Home</NavLink>
                     </li>
                     <li className="nav_items">
-                        <NavLink to='/about' className="nav_links">About</NavLink>
+                        <NavLink to='/services' className="nav_links">Servicios</NavLink>
                     </li>
                     <li className="nav_items">
                         <NavLink to='/contact' className="nav_links">Contact</NavLink>
@@ -49,11 +50,13 @@ export const Navbar = () => {
                     <li className="nav_items">
                         <NavLink to='/login' className="nav_links">Acerca de</NavLink>
                     </li>
+                     {/* Separador */}
+                     <div className="nav-separator"></div>
                     <li className="nav_items">
-                        <NavLink to='/register' className="nav_links">Register</NavLink>
+                        <NavLink to='/register' className="nav_links nav_link--register">Register</NavLink>
                     </li>
                     <li className="nav_items">
-                        <NavLink to='/login' className="nav_links">Login</NavLink>
+                        <NavLink to='/login' className="nav_links nav_link--login">Login</NavLink>
                     </li>
                     <img src="/close.svg" className="nav_close" ref={closeBtnRef} alt="Cerrar menú" />
                 </ul>

@@ -1,144 +1,331 @@
 :root {
-    --padding-container: 100px 0;
-    --color-primario: #FFD200;           /* Amarillo vibrante */
-    --color-secundario: #FA0E95;         /* Rosa fuerte */
-    --color-fondo: #F4F7F8;              /* Gris muy claro */
-    --color-texto: #013C56;              /* Azul muy oscuro */
-    --color-complementario: #8AD8C1;     /* Verde menta suave */
+  --padding-container: 100px 0;
+  --color-primario: #FFD200;
+  /* Amarillo vibrante */
+  --color-secundario: #FA0E95;
+  /* Rosa fuerte */
+  --color-fondo: #F4F7F8;
+  /* Gris muy claro */
+  --color-texto: #013C56;
+  /* Azul muy oscuro */
+  --color-complementario: #8AD8C1;
+  /* Verde menta suave */
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-    font-family: "Fredoka", sans-serif;
+  font-family: "Fredoka", sans-serif;
+  background-color: var(--color-fondo);
 }
 
 .container {
-    padding: var(--padding-container);
-    width: 90%;/* Define el ancho del contenedor como el 90% del ancho de la pantalla */
-    max-width: 1200px;/* Limita el ancho máximo a 1200px */
-    margin: 0 auto;/* Centra el contenedor horizontalmente */
-    overflow: hidden;
+  padding: var(--padding-container);
+  width: 90%;
+  /* Define el ancho del contenedor como el 90% del ancho de la pantalla */
+  max-width: 1200px;
+  /* Limita el ancho máximo a 1200px */
+  margin: 0 auto;
+  /* Centra el contenedor horizontalmente */
+  overflow: hidden;
 }
+
 /* navbar */
-.nav_container{
-    background-color: var(--color-primario);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    position: fixed;
-     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* asegúrate de que esté sobre el fondo */
+.nav_container {
+  background-color: var(--color-primario);
+  height: 65px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  z-index: 1000;
+  /* asegúrate de que esté sobre el fondo */
 }
-.nav{
-    --padding-container: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
+
+.nav {
+  --padding-container: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
-.logo{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
-.nav_link{
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    padding: 0;
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: max-content;
-    gap: 2em;
+
+.nav_link {
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: max-content;
+  gap: 2em;
 }
-.nav_items{
-    list-style: none;
+
+.nav-separator {
+  width: 2px;
+  height: 30px;
+  background: var(--color-fondo);
+  opacity: 0.3;
+  border-radius: 1px;
 }
-.nav_links{
-    color: var(--color-fondo);
-    text-decoration: none;
+
+.nav_items {
+  list-style: none;
+  position: relative;
 }
+
+.nav_links {
+  color: var(--color-fondo);
+  text-decoration: none;
+  font-size: 1.1em;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 10px;
+  border-radius: 0.5rem;
+  
+
+}
+
+.nav_links::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-fondo);
+  transition: var(--transition);
+  transform: translateX(-50%);
+}
+
+.nav_links:hover::before {
+  width: 80%;
+}
+
+.nav_links:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-5px);
+  transform: scale(1.1);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.nav_link--register,
+.nav_link--login {
+  background-color: var(--color-secundario);
+  padding: 10px;
+  border-radius: 0.5rem;
+  /* Bordes redondeados */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.nav_link--register:hover,
+.nav_link--login:hover {
+ background-color: #d11983;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  /* Bordes redondeados */
+}
+
 /* Icono de menú hamburguesa para móviles */
 .nav_menu {
   margin-left: auto;
-  cursor: pointer; /* Cambia el cursor a tipo puntero */
-  display: none; /* Se oculta por defecto */
+  cursor: pointer;
+  /* Cambia el cursor a tipo puntero */
+  display: none;
+  /* Se oculta por defecto */
 }
 
 .nav_img {
-  display: block; /* Hace que el icono se muestre como bloque */
-  width: 30px; /* Define su tamaño */
+  display: block;
+  /* Hace que el icono se muestre como bloque */
+  width: 30px;
+  
+  /* Define su tamaño */
 }
 
 /* Icono de cerrar menú en dispositivos móviles */
 .nav_close {
-  display: var(--show, none); /* Se muestra o se oculta dinámicamente */
+  display: var(--show, none);
+  /* Se muestra o se oculta dinámicamente */
 }
 
 /* hero */
 .hero {
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    max-height: 800px;
-    position: relative;
-    display: grid;
-    grid-template-rows:100px 1fr ;
-    color: var(--color-fondo);
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  max-height: 800px;
+  position: relative;
+  display: grid;
+  grid-template-rows: 100px 1fr;
+  color: var(--color-fondo);
 }
-.hero::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: linear-gradient(100deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%),url('/hero.jpg');
-    background-size: cover;
-    background-position: center;
-     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%); /* Crea un efecto de recorte */
-    z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(100deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url('/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+  /* Crea un efecto de recorte */
+  z-index: -1;
+  /* Asegura que el fondo esté detrás del contenido */
 }
+
 /* Sección Hero */
 .hero_container {
-  max-width: 800px; /* Limita el ancho del contenedor */
-  --padding-container: 0; /* Quita el padding predefinido */
-  display: grid; /* Usa grid para distribuir los elementos */
-  grid-auto-rows: max-content; /* Ajusta las filas según el contenido */
-  align-content: center; /* Centra el contenido verticalmente */
-  gap: 1em; /* Espaciado entre elementos */
-  padding-bottom: 100px; /* Espaciado inferior */
-  padding-top: 150px; /* Espaciado superior */
+  max-width: 800px;
+  /* Limita el ancho del contenedor */
+  --padding-container: 0;
+  /* Quita el padding predefinido */
+  display: grid;
+  /* Usa grid para distribuir los elementos */
+  grid-auto-rows: max-content;
+  /* Ajusta las filas según el contenido */
+  align-content: center;
+  /* Centra el contenido verticalmente */
+  gap: 1em;
+  /* Espaciado entre elementos */
+  padding-bottom: 100px;
+  /* Espaciado inferior */
+  padding-top: 200px;
+  /* Espaciado superior */
   margin-top: auto;
-  text-align: center; /* Centra el texto */
+  text-align: center;
+  /* Centra el texto */
 }
 
 /* Título dentro de hero */
 .hero_title {
-  font-size: 3rem; /* Tamaño de fuente grande */
-  color: var();
+  font-size: 3rem;
 }
 
 /* Párrafo dentro de hero (error en el selector, lo corregimos) */
 .hero_paragraph {
-  margin-bottom: 20px; /* Espaciado inferior */
+  margin-bottom: 20px;
+  /* Espaciado inferior */
 }
 
 /* Botón de llamado a la acción */
 .cta {
-  display: inline-block; /* Se comporta como un botón */
-  background-color:var(--color-primario); /* Color de fondo */
-  justify-self: center; /* Centra el botón dentro del grid */
-  color: var(--color-fondo); /* Color del texto */
-  text-decoration: none; /* Quita el subrayado */
-  padding: 13px 30px; /* Define el tamaño del botón */
-  border-radius: 32px; /* Bordes redondeados */
+  display: inline-block;
+  /* Se comporta como un botón */
+  background-color: var(--color-primario);
+  /* Color de fondo */
+  justify-self: center;
+  /* Centra el botón dentro del grid */
+  color: var(--color-fondo);
+  /* Color del texto */
+  text-decoration: none;
+  /* Quita el subrayado */
+  padding: 13px 30px;
+  /* Define el tamaño del botón */
+  border-radius: 0.5rem;
+  /* Bordes redondeados */
+  font-size: 1.1em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
+.cta:hover {
+  background-color: var(--color-secundario);
+  /* Cambia el color de fondo al pasar el cursor */
+  /* Efecto de elevación */
+}
+/* Services */
+.about {
+  padding-top: 80px;
+  padding-bottom: 70px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.subtitle {
+  color: var(--color-texto);
+  font-size: 2.3em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.about_paragraph {
+  color: var(--color-texto);
+  line-height: 1.7;
+}
+
+.about-paragraph {
+  color: var(--color-texto);
+  line-height: 1.7;
+  font-size: 1.3em;
+}
+
+.about_main {
+  padding: 30px 10px 30px 10px;
+  display: grid;
+  width: 90%;
+  margin: auto;
+  gap: 1.5em;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+}
+
+.about_icons {
+  display: grid;
+  position: relative;
+  gap: 1em;
+  justify-items: center;
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+.about_icons::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: var(--color-primario)
+}
+
+.about_icons:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.about_icon {
+  width: 45px;
+  padding-top: 14px;
+  transition: transform 0.3s ease;
+}
+
+.about_icons:hover .about_icon {
+  transform: rotate(360deg);
+}
+
+.about_title {
+  color: var(--color-texto);
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
-  .nav_menu{
+  .nav_menu {
     display: block;
   }
-  .nav_link--menu{
+
+  .nav_link--menu {
     position: fixed;
     background-color: var(--color-primario);
     top: 0;
@@ -155,12 +342,13 @@ body {
     transition: .7s opacity;
   }
 
-  .nav_link--show{
-    --show:block;
+  .nav_link--show {
+    --show: block;
     opacity: 1;
     pointer-events: unset;
   }
-  .nav_close{
+
+  .nav_close {
     position: absolute;
     top: 30px;
     right: 30px;
