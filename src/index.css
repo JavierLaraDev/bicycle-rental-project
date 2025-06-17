@@ -1,5 +1,5 @@
 :root {
-  --padding-container: 100px 0;
+  --padding-container: 80px 0;
   --color-primario: #FFD200;
   /* Amarillo vibrante */
   --color-secundario: #FA0E95;
@@ -82,7 +82,8 @@ body {
 }
 
 .nav_links {
-  color: var(--color-fondo);
+  color: var(--color-texto);
+  font-weight: bold;
   text-decoration: none;
   font-size: 1.1em;
   position: relative;
@@ -100,7 +101,7 @@ body {
   left: 50%;
   width: 0;
   height: 2px;
-  background: var(--color-fondo);
+  background: var(--color-texto);
   transition: var(--transition);
   transform: translateX(-50%);
 }
@@ -224,7 +225,7 @@ body {
   /* Color de fondo */
   justify-self: center;
   /* Centra el botón dentro del grid */
-  color: var(--color-fondo);
+  color: var(--color-texto);
   /* Color del texto */
   text-decoration: none;
   /* Quita el subrayado */
@@ -233,6 +234,7 @@ body {
   border-radius: 0.5rem;
   /* Bordes redondeados */
   font-size: 1.1em;
+  font-weight: bold;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 .cta:hover {
@@ -319,7 +321,43 @@ body {
   font-size: 1.3em;
   font-weight: bold;
 }
+/* Quienes Somos */
 
+.whoWeAre{
+background: linear-gradient(135deg, #1e3c72 40%, #8AD8C1 100%);
+overflow: hidden;
+}
+.whoWeAre_container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3em;
+  align-items: center;
+}
+.whoWeAre_picture{
+  max-width: 500px;
+}
+.whoWeAre_paragraph{
+  line-height: 1.7;
+  margin-bottom: 15px;
+  color: var(--color-fondo);
+  font-size: 1.1em;
+}
+.whoWeAre_subtitle{
+  color: var(--color-fondo);
+  font-size: 2.3em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.whoWeAre_sub_subtitle{
+  color: var(--color-fondo);
+  margin-bottom: 10px;
+}
+.whoWeAre_img{
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
 @media screen and (max-width: 768px) {
   .nav_menu {
     display: block;
